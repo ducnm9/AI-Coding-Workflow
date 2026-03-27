@@ -1,8 +1,46 @@
-# AI Coding Workflow — Hướng dẫn sử dụng
+# AI Coding Workflow
 
-Bộ cấu hình chuẩn hóa cho 4 AI coding agents, giúp team làm việc với AI theo quy trình **TDD nghiêm ngặt** thay vì chat random.
+**Biến AI từ chatbot thành production system.**
 
-> **Triết lý:** Không chat với AI → điều khiển AI như system. Không tin output → tin test.
+Hầu hết developer dùng AI theo kiểu hỏi-đáp: chat random, copy-paste code, rồi debug bằng cảm tính. Kết quả? Code chạy được lúc demo nhưng vỡ khi lên production. AI mạnh, nhưng không có quy trình thì output không đáng tin.
+
+Dự án này giải quyết vấn đề đó. Thay vì chat với AI, bạn điều khiển AI như một system có kiểm soát — theo pipeline TDD nghiêm ngặt, với feedback loop tự động, áp dụng được ngay cho 4 AI coding agents phổ biến nhất hiện tại.
+
+---
+
+## Tại sao nên dùng workflow này?
+
+### Vấn đề với cách dùng AI hiện tại
+
+Phần lớn developer đang rơi vào vòng lặp: hỏi AI → nhận code → chạy thử → lỗi → hỏi lại → nhận code khác → lỗi khác. Không có spec rõ ràng, không có test kiểm chứng, không có quy trình fix có hệ thống. AI trở thành hộp đen — đôi khi ra code đúng, đôi khi không, và bạn không biết tại sao.
+
+### Cách workflow này thay đổi cuộc chơi
+
+**Test là nguồn sự thật duy nhất, không phải AI output.** Mọi dòng code AI sinh ra đều phải pass test thật. Không có test → không có code. Đơn giản vậy thôi.
+
+**Feedback loop tự động thay vì fix thủ công.** Khi test fail, error log thực tế được đưa lại cho AI. AI fix dựa trên data, không phải đoán. Vòng lặp này chạy cho đến khi pass — không cần bạn can thiệp bằng tay.
+
+**Prompt có cấu trúc thay vì chat tự do.** Mỗi bước trong pipeline có prompt template riêng. AI nhận đúng context, đúng constraints, đúng format. Kết quả nhất quán hơn, ít hallucination hơn.
+
+**Áp dụng được cho cả team, không chỉ cá nhân.** Config sẵn cho GitHub Copilot, Claude Code, Aider, Kiro. Copy vào project, chỉnh vài dòng command, cả team dùng chung một quy trình. Không phụ thuộc vào "người biết prompt hay".
+
+### Ưu điểm cụ thể
+
+- **Giảm thời gian debug** — AI fix dựa trên error log thật, không đoán mò
+- **Code quality cao hơn** — TDD đảm bảo mọi function đều có test coverage
+- **Reproducible** — Cùng spec, cùng prompt, cùng pipeline → kết quả nhất quán
+- **Agent-agnostic** — Đổi AI tool bất kỳ lúc nào mà không mất quy trình
+- **Scale được** — Thêm người vào team? Copy config, done. Không cần training dài
+- **Chống hallucination** — AI không tự do sáng tạo, phải pass test mới được chấp nhận
+- **Template hóa** — Mỗi lần giải quyết xong một bài toán, pattern được lưu lại để reuse
+
+> **Tóm lại:** AI chỉ mạnh khi có system control. Không có system → entropy. Có system → scale.
+
+---
+
+## Hướng dẫn sử dụng
+
+Bộ cấu hình chuẩn hóa cho 4 AI coding agents, giúp team làm việc với AI theo quy trình TDD nghiêm ngặt thay vì chat random.
 
 ---
 
