@@ -1,0 +1,12 @@
+{
+  "name": "Run Tests After Code Generation",
+  "version": "1.0.0",
+  "description": "Tự động chạy test sau khi agent hoàn thành task (validate TDD)",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm test"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Lint on Save",
+  "version": "1.0.0",
+  "description": "Tự động lint khi save file TypeScript/JavaScript",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["*.ts", "*.tsx", "*.js", "*.jsx"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm run lint --fix"
+  }
+}

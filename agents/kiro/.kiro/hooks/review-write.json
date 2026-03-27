@@ -1,0 +1,13 @@
+{
+  "name": "Review Write Operations",
+  "version": "1.0.0",
+  "description": "Kiểm tra code trước khi write — đảm bảo không sửa test files",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": ["write"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Trước khi write, hãy kiểm tra: 1) File này có phải test file không? Nếu có, KHÔNG được sửa. 2) Code có follow clean code principles không? 3) Có break existing tests không?"
+  }
+}

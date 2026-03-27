@@ -1,0 +1,16 @@
+# Aider Configuration — AI Coding Workflow
+# Đặt file này ở root project
+
+# Model settings
+model: claude-sonnet-4-20250514
+edit-format: diff
+auto-commits: false
+auto-lint: true
+auto-test: true
+lint-cmd: "npm run lint"
+test-cmd: "npm test"
+
+# Behavior
+stream: true
+pretty: true
+dark-mode: true
